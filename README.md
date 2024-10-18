@@ -48,6 +48,48 @@ Once the user is satisfied with the items in the cart, clicking the **Buy** butt
 - The system gracefully handles errors such as insufficient stock or invalid input.
 - Messages are displayed on the client GUI to inform users of any issues during the transaction process.
 
+## Instructions to Run the Java RMI-Based POS System
+
+Follow the steps below to compile and run the Java RMI-based POS system with client-server architecture and a graphical user interface (GUI):
+
+---
+
+### Step 1: Compile All Java Files
+
+First, compile all the necessary Java files using the `javac` command to prepare the server, client, and interface files for execution.
+
+```bash
+javac POSInterface.java Product.java POSImpl.java POSServer.java POSClientGUI.java
+```
+
+### Step 2: Start the RMI Registry
+
+Before running the server, you need to start the RMI registry. The RMI registry allows the client to look up remote objects on the server. This should be run in a separate terminal window.
+```bash
+rmiregistry
+```
+Note: Make sure to keep the registry running in the background while you execute the other steps.
+
+
+### Step 3: Run the POS Server
+
+Once the RMI registry is running, start the server which handles inventory management, product listing, and sales processing.
+
+```bash
+java POSServer
+```
+-This starts the server and makes it ready to handle requests from the client.
+
+### Step 4: Run the POS Client with GUI
+
+In a new terminal window, run the client application to launch the GUI (built using Java Swing) for the Point of Sale system.
+
+```bash
+java POSClientGUI.java
+```
+-This opens the graphical interface where users can interact with the POS system, select products, add them to the cart, and make purchases.
+-The client connects to the server via RMI to retrieve product details, check stock, and process transactions.
+
 ## System Overview
 
 - The server manages the product inventory and handles requests from the client. It also updates product stock levels after each successful sale.
